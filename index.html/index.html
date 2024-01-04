@@ -40,6 +40,13 @@
             color: #fff;
         }
 
+        .football-ball {
+            background: url('ruta/imagen_balón.png') center center no-repeat;
+            background-size: cover;
+            width: 50px; /* Ajusta el tamaño según sea necesario */
+            height: 50px; /* Ajusta el tamaño según sea necesario */
+        }
+
         .opinions {
             margin-top: 20px;
         }
@@ -53,42 +60,11 @@
             bottom: 0;
             width: 100%;
         }
-
-        /* Estilo adicional para las noticias */
-        #noticias {
-            margin-top: 20px;
-        }
-
-        article {
-            background-color: #fff;
-            border-radius: 5px;
-            padding: 10px;
-            margin-bottom: 15px;
-        }
-
-        article h3 {
-            color: #00897B; /* Verde */
-        }
-
-        article p {
-            color: #555;
-        }
-
-        article a {
-            color: #00897B; /* Verde */
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        article a:hover {
-            text-decoration: underline;
-        }
     </style>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
-    <meta http-equiv="Permissions-Policy" content="interest-cohort=()"/>
     <title>Futbol Champan</title>
 </head>
 <body>
@@ -109,8 +85,8 @@
         <!-- Enfrentamientos del Día -->
         <h2>Enfrentamientos del Día</h2>
         <div class="match-info">
-            <span>Barcelona vs. Real Madrid</span>
-            <!-- Puedes agregar logos aquí -->
+            <span class="football-ball"></span> Barcelona vs. Real Madrid
+            <!-- Puedes agregar más elementos aquí -->
         </div>
 
         <!-- Opiniones y Análisis -->
@@ -146,9 +122,14 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Reemplaza 'ruta/imagen_balón.png' con la ruta correcta de tu imagen de balón
+            const noticiasSection = document.getElementById('noticias');
+            const footballBall = '<span class="football-ball"></span>';
+            noticiasSection.innerHTML = `<h2>${footballBall} Últimas Noticias de Fútbol</h2>`;
+
             // Reemplaza 'TU_CLAVE_DE_API' con tu clave de API de The Guardian
             const apiKey = 'f207afbb-e945-4039-8721-929b02811049';
-            const newsUrl = https://content.guardianapis.com/football?api-key=f207afbb-e945-4039-8721-929b02811049;
+            const newsUrl = `https://content.guardianapis.com/football?api-key=${apiKey}`;
 
             fetch(newsUrl)
                 .then(response => response.json())
@@ -161,9 +142,6 @@
                 });
 
             function mostrarNoticias(noticias) {
-                const noticiasSection = document.getElementById('noticias');
-                noticiasSection.innerHTML = '<h2>Últimas Noticias de Fútbol</h2>';
-
                 noticias.forEach(noticia => {
                     const articleElement = document.createElement('article');
                     articleElement.innerHTML = `
@@ -179,3 +157,4 @@
     </script>
 </body>
 </html>
+
