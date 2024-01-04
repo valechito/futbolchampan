@@ -83,7 +83,11 @@
         <div id="calendar"></div>
 
         <!-- Enfrentamientos del Día -->
-        <div id="enfrentamientos"></div>
+        <h2>Enfrentamientos del Día</h2>
+        <div class="match-info">
+            <span class="football-ball"></span> Barcelona vs. Real Madrid
+            <!-- Puedes agregar más elementos aquí -->
+        </div>
 
         <!-- Opiniones y Análisis -->
         <div class="opinions">
@@ -114,29 +118,39 @@
             events: partidos, // Asigna los eventos (partidos)
             // Otros ajustes del calendario
         });
+    </script>
 
+    <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const apiKey = 'f3f196af53b14869a4e7d2dbf9bf9e42'; // Reemplaza con tu clave de API de Football Data
-            const enfrentamientosUrl = 'https://api.football-data.org/v2/matches';
+            // Reemplaza 'ruta/imagen_balón.png' con la ruta correcta de tu imagen de balón
+            const noticiasSection = document.getElementById('noticias');
+            const footballBall = '<span class="football-ball"></span>';
+            noticiasSection.innerHTML = `<h2>${footballBall} Últimas Noticias de Fútbol</h2>`;
 
-            // Obtiene los enfrentamientos del día utilizando la API de Football Data
-            fetch(`${enfrentamientosUrl}?api_token=f3f196af53b14869a4e7d2dbf9bf9e42`)
+            // Reemplaza 'TU_CLAVE_DE_API' con tu clave de API de The Guardian
+            const apiKey = 'f207afbb-e945-4039-8721-929b02811049';
+            const newsUrl = `https://content.guardianapis.com/football?api-key=f207afbb-e945-4039-8721-929b02811049`;
+
+            fetch(newsUrl)
                 .then(response => response.json())
                 .then(data => {
-                    mostrarEnfrentamientos(data.matches);
+                    // Muestra las noticias en tu página
+                    mostrarNoticias(data.response.results);
                 })
                 .catch(error => {
-                    console.error('Error al obtener enfrentamientos:', error);
+                    console.error('Error al obtener noticias de fútbol:', error);
                 });
 
-            function mostrarEnfrentamientos(enfrentamientos) {
-                const enfrentamientosDiv = document.getElementById('enfrentamientos');
-                enfrentamientosDiv.innerHTML = '<h2>Enfrentamientos del Día</h2>';
-
-                enfrentamientos.forEach(enfrentamiento => {
-                    const enfrentamientoElement = document.createElement('div');
-                    enfrentamientoElement.innerHTML = `<span class="football-ball"></span> ${enfrentamiento.homeTeam.name} vs. ${enfrentamiento.awayTeam.name}`;
-                    enfrentamientosDiv.appendChild(enfrentamientoElement);
+            function mostrarNoticias(noticias) {
+                noticias.forEach(noticia => {
+                    const articleElement = document.createElement('article');
+                    articleElement.innerHTML = `
+                        <h3>${noticia.webTitle}</h3>
+                        <p>${noticia.webTrailText}</p>
+                        <a href="${noticia.webUrl}" target="_blank">Leer más</a>
+                        <hr>
+                    `;
+                    noticiasSection.appendChild(articleElement);
                 });
             }
         });
