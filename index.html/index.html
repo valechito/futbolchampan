@@ -4,17 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        /* Estilos generales */
         body {
-            background-color: #a4c639; /* Verde pasto */
-            color: #fff; /* Texto blanco */
             font-family: 'Arial', sans-serif;
+            background-color: #f2f2f2;
             margin: 0;
             padding: 0;
+            color: #333;
         }
 
         header {
-            background-color: #1a237e; /* Azul oscuro */
+            background-color: #00897B; /* Verde */
             color: #fff;
             padding: 10px;
             text-align: center;
@@ -25,39 +24,45 @@
             margin: 20px auto;
         }
 
-        /* Estilos del calendario */
         #calendar {
             max-width: 600px;
             margin: 20px auto;
         }
 
-        /* Estilos de enfrentamientos */
         .match-info {
             display: flex;
             align-items: center;
             justify-content: space-between;
             margin-bottom: 15px;
-            background-color: #1a237e; /* Fondo azul oscuro */
+            background-color: #00897B; /* Verde */
             padding: 10px;
             border-radius: 5px;
-        }
-
-        .match-info span {
             color: #fff;
         }
 
-        /* Agrega más estilos según sea necesario */
+        .opinions {
+            margin-top: 20px;
+        }
 
+        footer {
+            background-color: #00897B; /* Verde */
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
     </style>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
-    <title>Mi Página de Fútbol</title>
+    <title>Futbol Champan</title>
 </head>
 <body>
     <header>
-        <h1>Mi Página de Fútbol</h1>
+        <h1>Futbol Champan</h1>
         <p>¡Tu fuente de noticias, partidos y análisis futbolero!</p>
     </header>
 
@@ -73,22 +78,20 @@
         <!-- Enfrentamientos del Día -->
         <h2>Enfrentamientos del Día</h2>
         <div class="match-info">
-            <img class="team-logo" src="ruta_del_logotipo/barcelona.png" alt="Logo Barcelona">
             <span>Barcelona vs. Real Madrid</span>
-            <img class="team-logo" src="ruta_del_logotipo/real_madrid.png" alt="Logo Real Madrid">
+            <!-- Puedes agregar logos aquí -->
         </div>
-        <!-- Agrega más enfrentamientos según sea necesario -->
-
-        <!-- Logos de Equipos -->
-        <h2>Logos de Equipos</h2>
-        <img class="team-logo" src="ruta_del_logotipo/barcelona.png" alt="Logo Barcelona">
-        <img class="team-logo" src="ruta_del_logotipo/real_madrid.png" alt="Logo Real Madrid">
-        <!-- Agrega más logos según sea necesario -->
 
         <!-- Opiniones y Análisis -->
-        <h2>Opiniones y Análisis</h2>
-        <p>Opiniones y análisis futbolero...</p>
+        <div class="opinions">
+            <h2>Opiniones y Análisis</h2>
+            <p>Opiniones y análisis futbolero...</p>
+        </div>
     </div>
+
+    <footer>
+        © 2024 Futbol Champan
+    </footer>
 
     <script>
         $(document).ready(function() {
