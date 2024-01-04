@@ -3,113 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fútbol News</title>
-    <link rel="stylesheet" href="styles.css">
     <style>
-    /* Estilos como se mencionó anteriormente */
+        /* Estilos futboleros */
+        body {
+            background-color: #a4c639; /* Verde pasto */
+            color: #fff; /* Texto blanco */
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
 
-    .team-logo {
-        max-width: 50px;
-        max-height: 50px;
-        margin-right: 10px;
-    }
+        header {
+            background-color: #1a237e; /* Azul oscuro */
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
 
-    .match-info {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 15px;
-    }
-</style>
+        .calendar-container {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
 
+        .team-logo {
+            max-width: 50px;
+            max-height: 50px;
+            margin-right: 10px;
+        }
+
+        .match-info {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            background-color: #1a237e; /* Fondo azul oscuro */
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .match-info span {
+            color: #fff;
+        }
+
+        /* Agrega más estilos futboleros según sea necesario */
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
+    <title>Mi Página de Fútbol</title>
 </head>
 <body>
-<!-- ... Otro contenido de la página ... -->
-
-<div class="calendar-container">
-    <!-- Calendario de FullCalendar -->
-    <div id="calendar"></div>
-
-    <!-- Partidos de la Semana -->
-    <div class="match-info">
-        <img class="team-logo" src="ruta_del_logotipo/equipo1.png" alt="Logo Equipo 1">
-        <span>Equipo 1 vs. Equipo 2</span>
-        <img class="team-logo" src="ruta_del_logotipo/equipo2.png" alt="Logo Equipo 2">
-    </div>
-
-    <!-- Agrega más partidos según sea necesario -->
-</div>
-
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
-
-<script>
-    $(document).ready(function() {
-        // Configura el calendario con FullCalendar
-        $('#calendar').fullCalendar({
-            // Configuración del calendario
-            // Puedes personalizar esto según tus necesidades
-            header: {
-                left: 'prev,next today',
-                center: 'title',
-                right: 'month,agendaWeek,agendaDay'
-            },
-            // ... más opciones del calendario ...
-        });
-    });
-</script>
-
-<!-- ... Otro contenido de la página ... -->
-
     <header>
-        <h1>Fútbol News</h1>
-        <nav>
-            <ul>
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#noticias">Noticias</a></li>
-                <li><a href="#partidos">Partidos</a></li>
-                <li><a href="#equipos">Equipos</a></li>
-            </ul>
-        </nav>
+        <h1>Mi Página de Fútbol</h1>
     </header>
 
-    <section id="inicio">
-        <h2>¡Bienvenido a Fútbol News!</h2>
-        <p>Las últimas noticias y análisis del mundo del fútbol.</p>
-    </section>
+    <div class="calendar-container">
+        <!-- Calendario de FullCalendar -->
+        <div id="calendar"></div>
+    </div>
 
-    <section id="noticias">
-        <article>
-            <h2>Noticia 1</h2>
-            <p>Descripción de la noticia 1...</p>
-        </article>
-        <article>
-            <h2>Noticia 2</h2>
-            <p>Descripción de la noticia 2...</p>
-        </article>
-    </section>
+    <script>
+        $(document).ready(function() {
+            // Datos de partidos para este mes de enero
+            var partidos = [
+                { title: 'Equipo 1 vs. Equipo 2', start: '2024-01-05T15:00:00', allDay: false },
+                { title: 'Equipo 3 vs. Equipo 4', start: '2024-01-10T18:30:00', allDay: false },
+                // Agrega más partidos según sea necesario
+            ];
 
-    <section id="partidos">
-        <h2>Próximos Partidos</h2>
-        <ul>
-            <li>Equipo 1 vs Equipo 2 - Fecha y Hora</li>
-            <li>Equipo 3 vs Equipo 4 - Fecha y Hora</li>
-        </ul>
-    </section>
-
-    <section id="equipos">
-        <h2>Equipos Destacados</h2>
-        <ul>
-            <li>Equipo A</li>
-            <li>Equipo B</li>
-        </ul>
-    </section>
-
-    <footer>
-        <p>&copy; 2024 Fútbol News. Todos los derechos reservados.</p>
-    </footer>
-
+            // Configura el calendario con FullCalendar
+            $('#calendar').fullCalendar({
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'month,agendaWeek,agendaDay'
+                },
+                events: partidos, // Asigna los eventos (partidos)
+                // Otros ajustes del calendario
+            });
+        });
+    </script>
 </body>
 </html>
+
