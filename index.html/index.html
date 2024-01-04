@@ -114,26 +114,47 @@
                 // Otros ajustes del calendario
             });
         });
-        function cargarNoticias() {
-        const noticiasSection = document.getElementById('noticias');
-        const apiKey = '755424f07a3d40d78df88f68e2d2653e';
-        const newsUrl = `https://newsapi.org/v2/top-headlines?category=sports&apiKey=755424f07a3d40d78df88f68e2d2653e`;
+   <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Permissions-Policy" content="interest-cohort=()"/>
+    <title>Futbol Champan</title>
+</head>
+<body>
+    <div id="noticias"></div>
 
-        fetch(newsUrl)
-            .then(response => response.json())
-            .then(data => {
-                // Procesa y muestra las noticias en tu página
-                console.log('Noticias de fútbol:', data.articles);
-                // Aquí puedes personalizar cómo mostrar las noticias en el DOM
-                noticiasSection.innerHTML = '<p>Últimas noticias de fútbol</p>';
-            })
-            .catch(error => {
-                console.error('Error al obtener noticias de fútbol:', error);
-            });
-    }
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const apiKey = "755424f07a3d40d78df88f68e2d2653e";
+            const newsUrl = `https://newsapi.org/v2/top-headlines?country=es&category=sports&apiKey=755424f07a3d40d78df88f68e2d2653e`;
+            fetch(newsUrl)
+                .then(response => response.json())
+                .then(data => {
+                    // Muestra las noticias en tu página
+                    mostrarNoticias(data.articles);
+                })
+                .catch(error => {
+                    console.error('Error al obtener noticias de fútbol:', error);
+                });
 
-    // Llama a la función para cargar noticias al cargar la página
-    cargarNoticias();
+            function mostrarNoticias(noticias) {
+                const noticiasSection = document.getElementById('noticias');
+                noticiasSection.innerHTML = '<h2>Últimas Noticias de Fútbol</h2>';
+
+                noticias.forEach(noticia => {
+                    const articleElement = document.createElement('article');
+                    articleElement.innerHTML = `
+                        <h3>${noticia.title}</h3>
+                        <p>${noticia.description}</p>
+                        <a href="${noticia.url}" target="_blank">Leer más</a>
+                        <hr>
+                    `;
+                    noticiasSection.appendChild(articleElement);
+                });
+            }
+        });
     </script>
 </body>
 </html>
