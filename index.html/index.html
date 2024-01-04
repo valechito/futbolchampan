@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
+    <meta http-equiv="Permissions-Policy" content="interest-cohort=()"/>
     <title>Futbol Champan</title>
 </head>
 <body>
@@ -46,37 +47,6 @@
     </footer>
 
     <script>
-        $(document).ready(function() {
-            // Datos de partidos para este mes de enero
-            var partidos = [
-                { title: 'Equipo 1 vs. Equipo 2', start: '2024-01-05T15:00:00', allDay: false },
-                { title: 'Equipo 3 vs. Equipo 4', start: '2024-01-10T18:30:00', allDay: false },
-                // Agrega más partidos según sea necesario
-            ];
-
-            // Configura el calendario con FullCalendar
-            $('#calendar').fullCalendar({
-                header: {
-                    left: 'prev,next today',
-                    center: 'title',
-                    right: 'month,agendaWeek,agendaDay'
-                },
-                events: partidos, // Asigna los eventos (partidos)
-                // Otros ajustes del calendario
-            });
-
-            <!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Permissions-Policy" content="interest-cohort=()"/>
-    <title>Futbol Champan</title>
-</head>
-<body>
-    <div id="noticias"></div>
-
-       $(document).ready(function() {
         // Datos de partidos para este mes de enero
         var partidos = [
             { title: 'Equipo 1 vs. Equipo 2', start: '2024-01-05T15:00:00', allDay: false },
@@ -94,42 +64,41 @@
             events: partidos, // Asigna los eventos (partidos)
             // Otros ajustes del calendario
         });
-    });
-</script>
+    </script>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Reemplaza 'TU_CLAVE_DE_API' con tu clave de API de The Guardian
-        const apiKey = 'f207afbb-e945-4039-8721-929b02811049';
-        const newsUrl = `https://content.guardianapis.com/football?api-key=f207afbb-e945-4039-8721-929b02811049`;
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Reemplaza 'TU_CLAVE_DE_API' con tu clave de API de The Guardian
+            const apiKey = 'f207afbb-e945-4039-8721-929b02811049';
+            const newsUrl = `https://content.guardianapis.com/football?api-key=f207afbb-e945-4039-8721-929b02811049`;
 
-        fetch(newsUrl)
-            .then(response => response.json())
-            .then(data => {
-                // Muestra las noticias en tu página
-                mostrarNoticias(data.response.results);
-            })
-            .catch(error => {
-                console.error('Error al obtener noticias de fútbol:', error);
-            });
+            fetch(newsUrl)
+                .then(response => response.json())
+                .then(data => {
+                    // Muestra las noticias en tu página
+                    mostrarNoticias(data.response.results);
+                })
+                .catch(error => {
+                    console.error('Error al obtener noticias de fútbol:', error);
+                });
 
-        function mostrarNoticias(noticias) {
-            const noticiasSection = document.getElementById('noticias');
-            noticiasSection.innerHTML = '<h2>Últimas Noticias de Fútbol</h2>';
+            function mostrarNoticias(noticias) {
+                const noticiasSection = document.getElementById('noticias');
+                noticiasSection.innerHTML = '<h2>Últimas Noticias de Fútbol</h2>';
 
-            noticias.forEach(noticia => {
-                const articleElement = document.createElement('article');
-                articleElement.innerHTML = `
-                    <h3>${noticia.webTitle}</h3>
-                    <p>${noticia.webTrailText}</p>
-                    <a href="${noticia.webUrl}" target="_blank">Leer más</a>
-                    <hr>
-                `;
-                noticiasSection.appendChild(articleElement);
-            });
-        }
-    });
-</script>
+                noticias.forEach(noticia => {
+                    const articleElement = document.createElement('article');
+                    articleElement.innerHTML = `
+                        <h3>${noticia.webTitle}</h3>
+                        <p>${noticia.webTrailText}</p>
+                        <a href="${noticia.webUrl}" target="_blank">Leer más</a>
+                        <hr>
+                    `;
+                    noticiasSection.appendChild(articleElement);
+                });
+            }
+        });
+    </script>
 </body>
 </html>
 
