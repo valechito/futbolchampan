@@ -7,6 +7,44 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<!-- ... Otro contenido de la página ... -->
+
+<div class="calendar-container">
+    <!-- Calendario de FullCalendar -->
+    <div id="calendar"></div>
+
+    <!-- Partidos de la Semana -->
+    <div class="match-info">
+        <img class="team-logo" src="ruta_del_logotipo/equipo1.png" alt="Logo Equipo 1">
+        <span>Equipo 1 vs. Equipo 2</span>
+        <img class="team-logo" src="ruta_del_logotipo/equipo2.png" alt="Logo Equipo 2">
+    </div>
+
+    <!-- Agrega más partidos según sea necesario -->
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        // Configura el calendario con FullCalendar
+        $('#calendar').fullCalendar({
+            // Configuración del calendario
+            // Puedes personalizar esto según tus necesidades
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'month,agendaWeek,agendaDay'
+            },
+            // ... más opciones del calendario ...
+        });
+    });
+</script>
+
+<!-- ... Otro contenido de la página ... -->
 
     <header>
         <h1>Fútbol News</h1>
