@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        /* Estilos futboleros */
+        /* Estilos generales */
         body {
             background-color: #a4c639; /* Verde pasto */
             color: #fff; /* Texto blanco */
@@ -20,21 +20,18 @@
             text-align: center;
         }
 
-        .calendar-container {
+        .container {
             max-width: 800px;
             margin: 20px auto;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
         }
 
-        .team-logo {
-            max-width: 50px;
-            max-height: 50px;
-            margin-right: 10px;
+        /* Estilos del calendario */
+        #calendar {
+            max-width: 600px;
+            margin: 20px auto;
         }
 
+        /* Estilos de enfrentamientos */
         .match-info {
             display: flex;
             align-items: center;
@@ -49,7 +46,8 @@
             color: #fff;
         }
 
-        /* Agrega más estilos futboleros según sea necesario */
+        /* Agrega más estilos según sea necesario */
+
     </style>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" />
@@ -60,11 +58,36 @@
 <body>
     <header>
         <h1>Mi Página de Fútbol</h1>
+        <p>¡Tu fuente de noticias, partidos y análisis futbolero!</p>
     </header>
 
-    <div class="calendar-container">
-        <!-- Calendario de FullCalendar -->
+    <div class="container">
+        <!-- Noticias de Fútbol -->
+        <h2>Últimas Noticias</h2>
+        <p>Aquí van las últimas noticias de fútbol...</p>
+
+        <!-- Calendario de Partidos -->
+        <h2>Calendario de Partidos (Enero)</h2>
         <div id="calendar"></div>
+
+        <!-- Enfrentamientos del Día -->
+        <h2>Enfrentamientos del Día</h2>
+        <div class="match-info">
+            <img class="team-logo" src="ruta_del_logotipo/barcelona.png" alt="Logo Barcelona">
+            <span>Barcelona vs. Real Madrid</span>
+            <img class="team-logo" src="ruta_del_logotipo/real_madrid.png" alt="Logo Real Madrid">
+        </div>
+        <!-- Agrega más enfrentamientos según sea necesario -->
+
+        <!-- Logos de Equipos -->
+        <h2>Logos de Equipos</h2>
+        <img class="team-logo" src="ruta_del_logotipo/barcelona.png" alt="Logo Barcelona">
+        <img class="team-logo" src="ruta_del_logotipo/real_madrid.png" alt="Logo Real Madrid">
+        <!-- Agrega más logos según sea necesario -->
+
+        <!-- Opiniones y Análisis -->
+        <h2>Opiniones y Análisis</h2>
+        <p>Opiniones y análisis futbolero...</p>
     </div>
 
     <script>
@@ -90,4 +113,3 @@
     </script>
 </body>
 </html>
-
