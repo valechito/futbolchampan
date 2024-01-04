@@ -1,200 +1,37 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f2f2f2;
-            margin: 0;
-            padding: 0;
-            color: #333;
-        }
-
-        header {
-            background-color: #00897B; /* Verde */
-            color: #fff;
-            padding: 10px;
-            text-align: center;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 20px auto;
-        }
-
-        #calendar {
-            max-width: 600px;
-            margin: 20px auto;
-        }
-
-        .match-info {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 15px;
-            background-color: #00897B; /* Verde */
-            padding: 10px;
-            border-radius: 5px;
-            color: #fff;
-        }
-
-        .opinions {
-            margin-top: 20px;
-        }
-
-        footer {
-            background-color: #00897B; /* Verde */
-            color: #fff;
-            text-align: center;
-            padding: 10px;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-    </style>
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
-    <title>Futbol Champan</title>
-    <head>
-    <!-- Otros elementos en el head -->
-    <script src="// Ejemplo utilizando la API de Football Data
-const apiKey = '// Ejemplo utilizando la API de Football Data
-const apiKey = 'f3f196af53b14869a4e7d2dbf9bf9e42';
-const baseUrl = 'https://api.football-data.org/v2';
-
-// Función para obtener información de partidos
-function obtenerPartidos() {
-    const url = `${baseUrl}/matches`;
-
-    fetch(url, {
-        method: 'GET',
-        headers: {
-            'X-Auth-Token': apiKey,
-        },
-    })
-    .then(response => response.json())
-    .then(data => {
-        // Procesa y muestra los datos en tu página
-        console.log('Datos de partidos:', data);
-    })
-    .catch(error => {
-        console.error('Error al obtener datos de partidos:', error);
-    });
-}
-
-// Llama a la función para obtener información de partidos
-obtenerPartidos();
-// Ejemplo utilizando la API de Football Data
-const apiKey = 'f3f196af53b14869a4e7d2dbf9bf9e42';
-const baseUrl = 'https://api.football-data.org/v2';
-
-// Función para obtener información de partidos
-function obtenerPartidos() {
-    const url = `${baseUrl}/matches`;
-
-    fetch(url, {
-        method: 'GET',
-        headers: {
-            'X-Auth-Token': apiKey,
-        },
-    })
-    .then(response => response.json())
-    .then(data => {
-        // Procesa y muestra los datos en tu página
-        console.log('Datos de partidos:', data);
-    })
-    .catch(error => {
-        console.error('Error al obtener datos de partidos:', error);
-    });
-}
-
-// Llama a la función para obtener información de partidos
-obtenerPartidos();
-';
-const baseUrl = 'https://api.football-data.org/v2';
-
-// Función para obtener información de partidos
-function obtenerPartidos() {
-    const url = `${baseUrl}/matches`;
-
-    fetch(url, {
-        method: 'GET',
-        headers: {
-            'X-Auth-Token': apiKey,
-        },
-    })
-    .then(response => response.json())
-    .then(data => {
-        // Procesa y muestra los datos en tu página
-        console.log('Datos de partidos:', data);
-    })
-    .catch(error => {
-        console.error('Error al obtener datos de partidos:', error);
-    });
-}
-
-// Llama a la función para obtener información de partidos
-obtenerPartidos();
-"></script>
-
+    <title>Fútbol Champan</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>Futbol Champan</h1>
-        <p>¡Tu fuente de noticias, partidos y análisis futbolero!</p>
+        <h1>Fútbol Champan</h1>
+        <p>Tu fuente de noticias, análisis y más</p>
     </header>
 
-    <div class="container">
-        <!-- Noticias de Fútbol -->
-        <h2>Últimas Noticias</h2>
-        <p>Aquí van las últimas noticias de fútbol...</p>
+    <section id="noticias">
+        <h2>Noticias de Fútbol</h2>
+        <!-- Aquí se mostrarán las noticias -->
+    </section>
 
-        <!-- Calendario de Partidos -->
-        <h2>Calendario de Partidos (Enero)</h2>
-        <div id="calendar"></div>
+    <section id="calendario">
+        <h2>Calendario de Partidos</h2>
+        <!-- Aquí se mostrarán los partidos -->
+    </section>
 
-        <!-- Enfrentamientos del Día -->
+    <section id="enfrentamientos-del-dia">
         <h2>Enfrentamientos del Día</h2>
-        <div class="match-info">
-            <span>Barcelona vs. Real Madrid</span>
-            <!-- Puedes agregar logos aquí -->
-        </div>
+        <!-- Aquí se mostrarán los enfrentamientos del día -->
+    </section>
 
-        <!-- Opiniones y Análisis -->
-        <div class="opinions">
-            <h2>Opiniones y Análisis</h2>
-            <p>Opiniones y análisis futbolero...</p>
-        </div>
-    </div>
+    <section id="opiniones-analisis">
+        <h2>Opiniones y Análisis</h2>
+        <!-- Aquí se mostrarán las opiniones y análisis -->
+    </section>
 
-    <footer>
-        © 2024 Futbol Champan
-    </footer>
-
-    <script>
-        $(document).ready(function() {
-            // Datos de partidos para este mes de enero
-            var partidos = [
-                { title: 'Equipo 1 vs. Equipo 2', start: '2024-01-05T15:00:00', allDay: false },
-                { title: 'Equipo 3 vs. Equipo 4', start: '2024-01-10T18:30:00', allDay: false },
-                // Agrega más partidos según sea necesario
-            ];
-
-            // Configura el calendario con FullCalendar
-            $('#calendar').fullCalendar({
-                header: {
-                    left: 'prev,next today',
-                    center: 'title',
-                    right: 'month,agendaWeek,agendaDay'
-                },
-                events: partidos, // Asigna los eventos (partidos)
-                // Otros ajustes del calendario
-            });
-        });
-    </script>
+    <script src="app.js"></script>
 </body>
 </html>
