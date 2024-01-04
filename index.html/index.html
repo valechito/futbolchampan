@@ -4,55 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f2f2f2;
-            margin: 0;
-            padding: 0;
-            color: #333;
-        }
-
-        header {
-            background-color: #00897B; /* Verde */
-            color: #fff;
-            padding: 10px;
-            text-align: center;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 20px auto;
-        }
-
-        #calendar {
-            max-width: 600px;
-            margin: 20px auto;
-        }
-
-        .match-info {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 15px;
-            background-color: #00897B; /* Verde */
-            padding: 10px;
-            border-radius: 5px;
-            color: #fff;
-        }
-
-        .opinions {
-            margin-top: 20px;
-        }
-
-        footer {
-            background-color: #00897B; /* Verde */
-            color: #fff;
-            text-align: center;
-            padding: 10px;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
+        /* Tu estilo existente... */
     </style>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" />
@@ -69,7 +21,7 @@
     <div class="container">
         <!-- Noticias de Fútbol -->
         <h2>Últimas Noticias</h2>
-        <p>Aquí van las últimas noticias de fútbol...</p>
+        <div id="noticias"></div>
 
         <!-- Calendario de Partidos -->
         <h2>Calendario de Partidos (Enero)</h2>
@@ -112,7 +64,49 @@
                 events: partidos, // Asigna los eventos (partidos)
                 // Otros ajustes del calendario
             });
+
+            <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Permissions-Policy" content="interest-cohort=()"/>
+    <title>Futbol Champan</title>
+</head>
+<body>
+    <div id="noticias"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Reemplaza 'TU_CLAVE_DE_API' con tu clave de API de The Guardian
+            const apiKey = 'f207afbb-e945-4039-8721-929b02811049';
+            const newsUrl = `https://content.guardianapis.com/football?api-key=f207afbb-e945-4039-8721-929b02811049`;
+
+            fetch(newsUrl)
+                .then(response => response.json())
+                .then(data => {
+                    // Muestra las noticias en tu página
+                    mostrarNoticias(data.response.results);
+                })
+                .catch(error => {
+                    console.error('Error al obtener noticias de fútbol:', error);
+                });
+
+            function mostrarNoticias(noticias) {
+                const noticiasSection = document.getElementById('noticias');
+                noticiasSection.innerHTML = '<h2>Últimas Noticias de Fútbol</h2>';
+
+                noticias.forEach(noticia => {
+                    const articleElement = document.createElement('article');
+                    articleElement.innerHTML = `
+                        <h3>${noticia.webTitle}</h3>
+                        <p>${noticia.webTrailText}</p>
+                        <a href="${noticia.webUrl}" target="_blank">Leer más</a>
+                        <hr>
+                    `;
+                    noticiasSection.appendChild(articleElement);
         });
     </script>
 </body>
 </html>
+
