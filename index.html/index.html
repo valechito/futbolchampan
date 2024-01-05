@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- Estilos generales -->
     <style>
         body {
             font-family: 'Roboto', sans-serif;
@@ -220,55 +221,47 @@
         © 2024 Futbol Champan
     </footer>
 
+    <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
 
     <script>
-        <!-- ... (código anterior) ... -->
+        // ... (código anterior) ...
 
-<!-- Tablero de Transferencias -->
-<h2>Tablero de Transferencias</h2>
-<div id="transferencias"></div>
+        // Añadimos la lógica para el tablero de transferencias
+        const transferenciasSection = document.getElementById('transferencias');
+        const transferenciasUrl = 'https://api.football-data.org/v2/transfers';
+        const apiKey = 'f3f196af53b14869a4e7d2dbf9bf9e42'; // Reemplaza con tu clave de API de Football Data
 
-<!-- ... (código posterior) ... -->
-
-<script>
-    // ... (código anterior) ...
-
-    // Añadimos la lógica para el tablero de transferencias
-    const transferenciasSection = document.getElementById('transferencias');
-    const transferenciasUrl = 'https://api.football-data.org/v2/transfers';
-    const apiKey = 'f3f196af53b14869a4e7d2dbf9bf9e42'; // Reemplaza con tu clave de API de Football Data
-
-    fetch(transferenciasUrl, {
-        headers: {
-            'X-Auth-Token': apiKey,
-        },
-    })
-    .then(response => response.json())
-    .then(data => {
-        mostrarTransferencias(data.transfers);
-    })
-    .catch(error => {
-        console.error('Error al obtener transferencias:', error);
-    });
-
-    function mostrarTransferencias(transferencias) {
-        transferenciasSection.innerHTML = '<h3>Últimas Transferencias</h3>';
-        
-        transferencias.forEach(transferencia => {
-            const transferenciaElement = document.createElement('div');
-            transferenciaElement.innerHTML = `
-                <p><strong>${transferencia.player.name}</strong> se trasladó a <strong>${transferencia.destinationTeam.name}</strong></p>
-                <p>Desde: ${transferencia.originTeam.name}</p>
-                <hr>
-            `;
-            transferenciasSection.appendChild(transferenciaElement);
+        fetch(transferenciasUrl, {
+            headers: {
+                'X-Auth-Token': apiKey,
+            },
+        })
+        .then(response => response.json())
+        .then(data => {
+            mostrarTransferencias(data.transfers);
+        })
+        .catch(error => {
+            console.error('Error al obtener transferencias:', error);
         });
-    }
 
-    // ... (código posterior) ...
-</script>
+        function mostrarTransferencias(transferencias) {
+            transferenciasSection.innerHTML = '<h3>Últimas Transferencias</h3>';
+            
+            transferencias.forEach(transferencia => {
+                const transferenciaElement = document.createElement('div');
+                transferenciaElement.innerHTML = `
+                    <p><strong>${transferencia.player.name}</strong> se trasladó a <strong>${transferencia.destinationTeam.name}</strong></p>
+                    <p>Desde: ${transferencia.originTeam.name}</p>
+                    <hr>
+                `;
+                transferenciasSection.appendChild(transferenciaElement);
+            });
+        }
+
+        // ... (código posterior) ...
+    </script>
 </body>
 </html>
