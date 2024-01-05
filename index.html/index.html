@@ -113,11 +113,8 @@
                 transform: translateY(0);
             }
         }
-    </style>
-    <!-- Agregamos un tipo de letra más atractivo -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <!-- Añadimos una animación al icono del balón de fútbol -->
-    <style>
+
+        /* Añadimos una animación al icono del balón de fútbol */
         .football-ball {
             background: url('https://raw.githubusercontent.com/valechito/futbolchampan/master/balon.png.png') center center no-repeat;
             background-size: cover;
@@ -134,9 +131,8 @@
                 transform: rotate(360deg);
             }
         }
-    </style>
-    <!-- Agregamos animaciones a las noticias -->
-    <style>
+
+        /* Agregamos animaciones a las noticias */
         #noticias article {
             opacity: 0;
             transform: translateY(20px);
@@ -149,9 +145,8 @@
                 transform: translateY(0);
             }
         }
-    </style>
-    <!-- Agregamos estilos al calendario -->
-    <style>
+
+        /* Agregamos estilos al calendario */
         .fc-head {
             background-color: #e8491d; /* Naranja */
             color: #fff;
@@ -165,152 +160,158 @@
 
         .fc-event {
             background-color: #e8491d; /* Naranja */
-            color: #fff;
-            border: 1px solid #e8491d; /* Naranja */
-            border-radius: 5px;
-        }
+            color:              .fc-event {
+                background-color: #e8491d; /* Naranja */
+                color: #fff;
+                border: 1px solid #e8491d; /* Naranja */
+                border-radius: 5px;
+            }
 
-        .fc-event:hover {
-            background-color: #ff6e3a; /* Naranja más claro */
-        }
-    </style>
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
-    <title>Futbol Champan</title>
-</head>
-<body>
-    <header>
-        <h1>Futbol Champan</h1>
-        <p>¡Tu fuente de noticias, partidos y análisis futbolero!</p>
-    </header>
+            .fc-event:hover {
+                background-color: #ff6e3a; /* Naranja más claro */
+            }
+        </style>
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
+        <title>Futbol Champan</title>
+    </head>
+    <body>
+        <header>
+            <h1>Futbol Champan</h1>
+            <p>¡Tu fuente de noticias, partidos y análisis futbolero!</p>
+        </header>
 
-    <div class="container">
-        <!-- Noticias de Fútbol -->
-        <h2>Últimas Noticias</h2>
-        <div id="noticias"></div>
+        <div class="container">
+            <!-- Noticias de Fútbol -->
+            <h2>Últimas Noticias</h2>
+            <div id="noticias"></div>
 
-        <!-- Calendario de Partidos -->
-        <h2>Calendario de Partidos (Enero)</h2>
-        <div id="calendar"></div>
+            <!-- Calendario de Partidos -->
+            <h2>Calendario de Partidos (Enero)</h2>
+            <div id="calendar"></div>
 
-        <!-- Enfrentamientos del Día -->
-        <h2>Enfrentamientos del Día</h2>
-        <div class="match-info">
-            <span class="football-ball"></span> Barcelona vs. Real Madrid
-            <!-- Puedes agregar más elementos aquí -->
-        </div>
-
-        <!-- Opiniones y Análisis -->
-        <div class="opinions">
-            <h2>Opiniones y Análisis</h2>
-            <div id="opinion-box">
-                <label for="opinion">Comparte tu opinión:</label>
-                <textarea id="opinion" rows="4" placeholder="Escribe aquí tu opinión..."></textarea>
-                <button onclick="enviarOpinion()">Enviar Opinión</button>
+            <!-- Enfrentamientos del Día -->
+            <h2>Enfrentamientos del Día</h2>
+            <div class="match-info">
+                <span class="football-ball"></span> Barcelona vs. Real Madrid
+                <!-- Puedes agregar más elementos aquí -->
             </div>
-            <p>Opiniones y análisis futbolero...</p>
+
+            <!-- Opiniones y Análisis -->
+            <div class="opinions">
+                <h2>Opiniones y Análisis</h2>
+                <div id="opinion-box">
+                    <label for="opinion">Comparte tu opinión:</label>
+                    <textarea id="opinion" rows="4" placeholder="Escribe aquí tu opinión..."></textarea>
+                    <button onclick="enviarOpinion()">Enviar Opinión</button>
+                </div>
+                <p>Opiniones y análisis futbolero...</p>
+            </div>
         </div>
-    </div>
 
-    <footer>
-        © 2024 Futbol Champan
-    </footer>
+        <footer>
+            © 2024 Futbol Champan
+        </footer>
 
-    <script>
-        // Datos de partidos para este mes de enero
-        var partidos = [
-            { title: 'Equipo 1 vs. Equipo 2', start: '2024-01-05T15:00:00', allDay: false },
-            { title: 'Equipo 3 vs. Equipo 4', start: '2024-01-10T18:30:00', allDay: false },
-            // Agrega más partidos según sea necesario
-        ];
+        <script>
+            // Datos de partidos para este mes de enero
+            var partidos = [
+                { title: 'Equipo 1 vs. Equipo 2', start: '2024-01-05T15:00:00', allDay: false },
+                { title: 'Equipo 3 vs. Equipo 4', start: '2024-01-10T18:30:00', allDay: false },
+                // Agrega más partidos según sea necesario
+            ];
 
-        document.addEventListener('DOMContentLoaded', function() {
-            // Resto de tu código aquí
+            document.addEventListener('DOMContentLoaded', function() {
+                // Resto de tu código aquí
 
-            // Configura el calendario con FullCalendar
-            $('#calendar').fullCalendar({
-                header: {
-                    left: 'prev,next today',
-                    center: 'title',
-                    right: 'month,agendaWeek,agendaDay'
-                },
-                events: partidos, // Asigna los eventos (partidos)
-                // Otros ajustes del calendario
+                // Configura el calendario con FullCalendar
+                $('#calendar').fullCalendar({
+                    header: {
+                        left: 'prev,next today',
+                        center: 'title',
+                        right: 'month,agendaWeek,agendaDay'
+                    },
+                    events: partidos, // Asigna los eventos (partidos)
+                    // Otros ajustes del calendario
+                });
+
+                // Reemplaza 'ruta/imagen_balón.png' con la ruta correcta de tu imagen de balón
+                const noticiasSection = document.getElementById('noticias');
+                const footballBall = '<span class="football-ball"></span>';
+                noticiasSection.innerHTML = `<h2>${footballBall} Últimas Noticias de Fútbol</h2>`;
+
+                // Reemplaza 'TU_CLAVE_DE_API' con tu clave de API de The Guardian
+                const apiKey = 'f207afbb-e945-4039-8721-929b02811049';
+                const newsUrl = `https://content.guardianapis.com/football?api-key=f207afbb-e945-4039-8721-929b02811049`;
+
+                fetch(newsUrl)
+                    .then(response => response.json())
+                    .then(data => {
+                        // Muestra las noticias en tu página
+                        mostrarNoticias(data.response.results);
+                    })
+                    .catch(error => {
+                        console.error('Error al obtener noticias de fútbol:', error);
+                    });
+
+                function mostrarNoticias(noticias) {
+                    noticias.forEach(noticia => {
+                        const articleElement = document.createElement('article');
+                        articleElement.innerHTML = `
+                            <h3>${noticia.webTitle}</h3>
+                            <p>${noticia.webTrailText}</p>
+                            <a href="${noticia.webUrl}" target="_blank">Leer más</a>
+                            <hr>
+                        `;
+                        noticiasSection.appendChild(articleElement);
+                    });
+                }
+
+                var settings = {
+                    "url": "https://v3.football.api-sports.io/leagues",
+                    "method": "GET",
+                    "timeout": 0,
+                    "headers": {
+                        "x-rapidapi-key": "8359dce2a58e8f6223d05569688b108d",
+                        "x-rapidapi-host": "v3.football.api-sports.io"
+                    },
+                };
+
+                $.ajax(settings).done(function (response) {
+                    console.log(response);
+                });
             });
 
-            // Reemplaza 'ruta/imagen_balón.png' con la ruta correcta de tu imagen de balón
-            const noticiasSection = document.getElementById('noticias');
-            const footballBall = '<span class="football-ball"></span>';
-            noticiasSection.innerHTML = `<h2>${footballBall} Últimas Noticias de Fútbol</h2>`;
+            <div id="wg-api-football-games"
+                data-host="v3.football.api-sports.io"
+                data-key="8359dce2a58e8f6223d05569688b108d"
+                data-date=""
+                data-league=""
+                data-season=""
+                data-theme=""
+                data-refresh="15"
+                data-show-toolbar="true"
+                data-show-errors="false"
+                data-show-logos="true"
+                data-modal-game="true"
+                data-modal-standings="true"
+                data-modal-show-logos="true">
+            </div>
+            <script
+                type="module"
+                src="https://widgets.api-sports.io/2.0.3/widgets.js">
+            </script>
 
-            // Reemplaza 'TU_CLAVE_DE_API' con tu clave de API de The Guardian
-            const apiKey = 'f207afbb-e945-4039-8721-929b02811049';
-            const newsUrl = `https://content.guardianapis.com/football?api-key=f207afbb-e945-4039-8721-929b02811049`;
-
-            fetch(newsUrl)
-                .then(response => response.json())
-                .then(data => {
-                    // Muestra las noticias en tu página
-                    mostrarNoticias(data.response.results);
-                })
-                .catch(error => {
-                    console.error('Error al obtener noticias de fútbol:', error);
-                });
-
-            function mostrarNoticias(noticias) {
-                noticias.forEach(noticia => {
-                    const articleElement = document.createElement('article');
-                    articleElement.innerHTML = `
-                        <h3>${noticia.webTitle}</h3>
-                        <p>${noticia.webTrailText}</p>
-                        <a href="${noticia.webUrl}" target="_blank">Leer más</a>
-                        <hr>
-                    `;
-                    noticiasSection.appendChild(articleElement);
-                });
+            function enviarOpinion() {
+                const opinionText = document.getElementById('opinion').value;
+                // Aquí puedes realizar acciones con la opinión, como guardarla en una base de datos, etc.
+                alert('Opinión enviada: ' + opinionText);
+                // Puedes agregar lógica adicional según sea necesario
             }
-var settings = {
-  "url": "https://v3.football.api-sports.io/leagues",
-  "method": "GET",
-  "timeout": 0,
-  "headers": {
-    "x-rapidapi-key": "8359dce2a58e8f6223d05569688b108d",
-    "x-rapidapi-host": "v3.football.api-sports.io"
-  },
-};
-
-$.ajax(settings).done(function (response) {
-  console.log(response);
-});
-        });
-
-        <div id="wg-api-football-games"
-     data-host="v3.football.api-sports.io"
-     data-key="8359dce2a58e8f6223d05569688b108d"
-     data-date=""
-     data-league=""
-     data-season=""
-     data-theme=""
-     data-refresh="15"
-     data-show-toolbar="true"
-     data-show-errors="false"
-     data-show-logos="true"
-     data-modal-game="true"
-     data-modal-standings="true"
-     data-modal-show-logos="true">
-</div>
-<script
-    type="module"
-    src="https://widgets.api-sports.io/2.0.3/widgets.js">
-</script>
-        function enviarOpinion() {
-            const opinionText = document.getElementById('opinion').value;
-            // Aquí puedes realizar acciones con la opinión, como guardarla en una base de datos, etc.
-            alert('Opinión enviada: ' + opinionText);
-            // Puedes agregar lógica adicional según sea necesario
-        }
-    </script>
-</body>
+        </script>
+    </body>
 </html>
+
+
