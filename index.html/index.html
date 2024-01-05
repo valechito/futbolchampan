@@ -117,7 +117,27 @@
     </footer>
 
     <script>
+        // Datos de partidos para este mes de enero
+        var partidos = [
+            { title: 'Equipo 1 vs. Equipo 2', start: '2024-01-05T15:00:00', allDay: false },
+            { title: 'Equipo 3 vs. Equipo 4', start: '2024-01-10T18:30:00', allDay: false },
+            // Agrega más partidos según sea necesario
+        ];
+
         document.addEventListener('DOMContentLoaded', function() {
+            // Resto de tu código aquí
+
+            // Configura el calendario con FullCalendar
+            $('#calendar').fullCalendar({
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'month,agendaWeek,agendaDay'
+                },
+                events: partidos, // Asigna los eventos (partidos)
+                // Otros ajustes del calendario
+            });
+
             // Reemplaza 'ruta/imagen_balón.png' con la ruta correcta de tu imagen de balón
             const noticiasSection = document.getElementById('noticias');
             const footballBall = '<span class="football-ball"></span>';
@@ -136,17 +156,6 @@
                 .catch(error => {
                     console.error('Error al obtener noticias de fútbol:', error);
                 });
-
-            // Configura el calendario con FullCalendar
-            $('#calendar').fullCalendar({
-                header: {
-                    left: 'prev,next today',
-                    center: 'title',
-                    right: 'month,agendaWeek,agendaDay'
-                },
-                events: partidos, // Asigna los eventos (partidos)
-                // Otros ajustes del calendario
-            });
 
             function mostrarNoticias(noticias) {
                 noticias.forEach(noticia => {
