@@ -243,11 +243,11 @@
             // Reemplaza 'ruta/imagen_balón.png' con la ruta correcta de tu imagen de balón
             const noticiasSection = document.getElementById('noticias');
             const footballBall = '<span class="football-ball"></span>';
-            noticiasSection.innerHTML = <h2>${footballBall} Últimas Noticias de Fútbol</h2>;
+            noticiasSection.innerHTML = `<h2>${footballBall} Últimas Noticias de Fútbol</h2>`;
 
             // Reemplaza 'TU_CLAVE_DE_API' con tu clave de API de The Guardian
             const apiKey = 'f207afbb-e945-4039-8721-929b02811049';
-            const newsUrl = https://content.guardianapis.com/football?api-key=f207afbb-e945-4039-8721-929b02811049;
+            const newsUrl = `https://content.guardianapis.com/football?api-key=f207afbb-e945-4039-8721-929b02811049`;
 
             fetch(newsUrl)
                 .then(response => response.json())
