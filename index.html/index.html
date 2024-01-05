@@ -271,28 +271,40 @@
                     noticiasSection.appendChild(articleElement);
                 });
             }
+var settings = {
+  "url": "https://v3.football.api-sports.io/leagues",
+  "method": "GET",
+  "timeout": 0,
+  "headers": {
+    "x-rapidapi-key": "8359dce2a58e8f6223d05569688b108d",
+    "x-rapidapi-host": "v3.football.api-sports.io"
+  },
+};
 
-       HttpRequest request = HttpRequest.newBuilder()
-                            .uri(URI.create("https://api.football-data.org/v4/competitions/PL/matches?matchday=28"))
-                            .header("X-Auth-Token", "8359dce2a58e8f6223d05569688b108d")
-                            .build();
-            };
-
-          import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-import java.net.http.BodyHandlers;
-
-HttpClient client = HttpClient.newHttpClient();
-HttpRequest request = HttpRequest.newBuilder()
-                                 .uri(URI.create("https://api.football-data.org/v4/competitions"))
-                                 .build();
-
-HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
-System.out.println(response.statusCode());
-System.out.println(response.body());
+$.ajax(settings).done(function (response) {
+  console.log(response);
+});
         });
 
+        <div id="wg-api-football-games"
+     data-host="v3.football.api-sports.io"
+     data-key="8359dce2a58e8f6223d05569688b108d"
+     data-date=""
+     data-league=""
+     data-season=""
+     data-theme=""
+     data-refresh="15"
+     data-show-toolbar="true"
+     data-show-errors="false"
+     data-show-logos="true"
+     data-modal-game="true"
+     data-modal-standings="true"
+     data-modal-show-logos="true">
+</div>
+<script
+    type="module"
+    src="https://widgets.api-sports.io/2.0.3/widgets.js">
+</script>
         function enviarOpinion() {
             const opinionText = document.getElementById('opinion').value;
             // Aquí puedes realizar acciones con la opinión, como guardarla en una base de datos, etc.
