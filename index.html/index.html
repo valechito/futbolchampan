@@ -282,7 +282,7 @@
                 redirect: 'follow'
             };
 
-            fetch("https://v3.football.api-sports.io/leagues", requestOptions)
+            fetch("https://api.football-data.org/v4/matches/330299", requestOptions)
                 .then(response => response.json())
                 .then(result => console.log(result))
                 .catch(error => console.log('error', error));
