@@ -4,7 +4,20 @@
     <meta http-equiv="Permissions-Policy" content="interest-cohort=(), user-id=()" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+        <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-firestore.js"></script>
+ <script>
+        // Inicializa Firebase con tus credenciales
+        const firebaseConfig = {
+            apiKey: "AIzaSyASZzUi-z32RoRMzBNr3XwAKVQ-gzMTGSE",
+            authDomain: "futbol-champan.firebaseapp.com",
+            projectId: "futbol-champan",
+ };
+    document.addEventListener('DOMContentLoaded', function () {
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+        const opinionesGuardadas = document.getElementById('opinionesGuardadas');
+    </head>
     <style>
         body {
             font-family: 'Roboto', sans-serif;
@@ -288,29 +301,78 @@
                 });
             }
         });
-      function enviarOpinion() {
-        const opinionText = document.getElementById('opinion').value;
+   cargarOpiniones();
 
-        // Verificar si el elemento 'opinionesGuardadas' existe antes de intentar agregar la opinión
-        const opinionesGuardadas = document.getElementById('opinionesGuardadas');
-        if (opinionesGuardadas) {
-            // Crear un nuevo elemento para mostrar la opinión
-            const opinionElement = document.createElement('div');
-            opinionElement.classList.add('opinion'); // Agrega la clase 'opinion' al nuevo elemento
-            opinionElement.innerHTML = `
-                <p>${opinionText}</p>
-                <hr>
-            `;
+            function cargarOpiniones() {
+                db.collection('opiniones').onSnapshot(snapshot => {
+                    opinionesGuardadas.innerHTML = '';
+                    snapshot.forEach(doc => {
+                        const opinion = doc.data();
+                        mostrarOpinion(opinion);
+                    });
+                });
+            }
 
-            // Agregar la opinión al contenedor
-            opinionesGuardadas.appendChild(opinionElement);
+            function mostrarOpinion(opinion) {
+                const opinionElement = document.createElement('div');
+                opinionElement.classList.add('opinion');
+                opinionElement.innerHTML = `
+                    <p>${opinion.text}</p>
+                    <button onclick="responderOpinion('${opinion.id}')">Responder</button>
+                    <div id="respuestas-${opinion.id}"></div>
+                    <hr>
+                `;
 
-            // Limpiar el área de opinión después de enviar
-            document.getElementById('opinion').value = '';
-        } else {
-            console.error("Elemento 'opinionesGuardadas' no encontrado.");
-        }
-    }
-</script>
+                opinionesGuardadas.appendChild(opinionElement);
+
+                // Cargar respuestas asociadas a esta opinión
+                cargarRespuestas(opinion.id, `respuestas-${opinion.id}`);
+            }
+
+            function cargarRespuestas(opinionId, containerId) {
+                db.collection('respuestas').where('opinionId', '==', opinionId).onSnapshot(snapshot => {
+                    const respuestasContainer = document.getElementById(containerId);
+                    respuestasContainer.innerHTML = '';
+
+                    snapshot.forEach(doc => {
+                        const respuesta = doc.data();
+                        mostrarRespuesta(respuesta, respuestasContainer);
+                    });
+                });
+            }
+
+            function mostrarRespuesta(respuesta, container) {
+                const respuestaElement = document.createElement('div');
+                respuestaElement.classList.add('respuesta');
+                respuestaElement.innerHTML = `
+                    <p>${respuesta.text}</p>
+                    <hr>
+                `;
+
+                container.appendChild(respuestaElement);
+            }
+
+            function responderOpinion(opinionId) {
+                const respuestaText = prompt('Responder a la opinión:');
+                if (respuestaText) {
+                    db.collection('respuestas').add({
+                        opinionId: opinionId,
+                        text: respuestaText
+                    });
+                }
+            }
+
+            function enviarOpinion() {
+                const opinionText = document.getElementById('opinion').value;
+
+                db.collection('opiniones').add({
+                    text: opinionText
+                });
+
+                // Limpiar el área de opinión después de enviar
+                document.getElementById('opinion').value = '';
+            }
+        });
+    </script>
 </body>
 </html>
