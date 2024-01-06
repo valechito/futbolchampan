@@ -269,7 +269,7 @@
             // Reemplaza 'ruta/imagen_balón.png' con la ruta correcta de tu imagen de balón
             const noticiasSection = document.getElementById('noticias');
             const footballBall = '<span class="football-ball"></span>';
-            noticiasSection.innerHTML = `<h2>${footballBall} Últimas Noticias de Fútbol</h2>`;
+            noticiasSection.innerHTML = '<h2>${footballBall} Últimas Noticias de Fútbol</h2>';
 
         document.addEventListener('DOMContentLoaded', () => {
             cargarNoticias();
@@ -285,7 +285,7 @@
 
             // Reemplaza 'TU_CLAVE_DE_API' con tu clave de API de The Guardian
             const apiKey = 'f207afbb-e945-4039-8721-929b02811049';
-            const newsUrl = `https://content.guardianapis.com/football?api-key=f207afbb-e945-4039-8721-929b02811049`;
+            const newsUrl = 'https://content.guardianapis.com/football?api-key=f207afbb-e945-4039-8721-929b02811049';
 
             fetch(newsUrl)
                 .then(response => response.json())
@@ -296,20 +296,17 @@
                 .catch(error => {
                     console.error('Error al obtener noticias de fútbol:', error);
                 });
+			}
 
             function mostrarNoticias(noticias) {
                 noticias.forEach(noticia => {
                     const articleElement = document.createElement('article');
-                    articleElement.innerHTML = `
-                        <h3>${noticia.webTitle}</h3>
-                        <p>${noticia.webTrailText}</p>
-                        <a href="${noticia.webUrl}" target="_blank">Leer más</a>
-                        <hr>
-                    `;
+                    articleElement.innerHTML = '<h3>${noticia.webTitle}</h3><p>${noticia.webTrailText}</p><a href="${noticia.webUrl}" target="_blank">Leer más</a><hr>';
                     noticiasSection.appendChild(articleElement);
                 });
             }
-   cargarOpiniones();
+			
+			cargarOpiniones();
 
             function cargarOpiniones() {
                 db.collection('opiniones').onSnapshot(snapshot => {
@@ -324,17 +321,12 @@
             function mostrarOpinion(opinion) {
                 const opinionElement = document.createElement('div');
                 opinionElement.classList.add('opinion');
-                opinionElement.innerHTML =`
-                    <p>${opinion.text}</p>
-                    <button onclick="responderOpinion('${opinion.id}')">Responder</button>
-                    <div id="respuestas-${opinion.id}"></div>
-                    <hr>
-                `;
+                opinionElement.innerHTML ='<p>${opinion.text}</p><button onclick="responderOpinion(\'${opinion.id}\')">Responder</button><div id="respuestas-${opinion.id}"></div><hr>';
 
                 opinionesGuardadas.appendChild(opinionElement);
 
                 // Cargar respuestas asociadas a esta opinión
-                cargarRespuestas(opinion.id, `respuestas-${opinion.id}`);
+                cargarRespuestas(opinion.id, 'respuestas-${opinion.id}');
             }
 
             function cargarRespuestas(opinionId, containerId) {
@@ -352,10 +344,7 @@
             function mostrarRespuesta(respuesta, container) {
                 const respuestaElement = document.createElement('div');
                 respuestaElement.classList.add('respuesta');
-                respuestaElement.innerHTML = `
-                    <p>${respuesta.text}</p>
-                    <hr>
-                `;
+                respuestaElement.innerHTML = '<p>${respuesta.text}</p><hr>';
 
                 container.appendChild(respuestaElement);
             }
