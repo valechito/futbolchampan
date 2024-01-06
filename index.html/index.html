@@ -1,15 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta http-equiv="Permissions-Policy" content="interest-cohort=(), user-id=()" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/moment.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" />
+
     <style>
         body {
             font-family: 'Roboto', sans-serif;
@@ -193,8 +189,11 @@
         border-color: #666;
         margin-top: 10px;
     } 
-   </style>
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
     <title>Futbol Champan</title>
 </head>
 <body>
@@ -236,25 +235,17 @@
         © 2024 Futbol Champan
     </footer>
 
-  <script>
-        // Inicializa Firebase con tus credenciales
-        var firebaseConfig = {
-            apiKey: "AIzaSyASZzUi-z32RoRMzBNr3XwAKVQ-gzMTGSE",
-            authDomain: "futbol-champan.firebaseapp.com",
-            projectId: "futbol-champan",
-        };
-        // Inicializa Firebase
-        firebase.initializeApp(firebaseConfig);
-        var db = firebase.firestore();
-        var opinionesGuardadas = document.getElementById('opinionesGuardadas');
-      
+    <script>
         // Datos de partidos para este mes de enero
         var partidos = [
             { title: 'Equipo 1 vs. Equipo 2', start: '2024-01-05T15:00:00', allDay: false },
             { title: 'Equipo 3 vs. Equipo 4', start: '2024-01-10T18:30:00', allDay: false },
             // Agrega más partidos según sea necesario
         ];
-           
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Resto de tu código aquí
+
             // Configura el calendario con FullCalendar
             $('#calendar').fullCalendar({
                 header: {
@@ -269,23 +260,11 @@
             // Reemplaza 'ruta/imagen_balón.png' con la ruta correcta de tu imagen de balón
             const noticiasSection = document.getElementById('noticias');
             const footballBall = '<span class="football-ball"></span>';
-            noticiasSection.innerHTML = '<h2>${footballBall} Últimas Noticias de Fútbol</h2>';
-
-        document.addEventListener('DOMContentLoaded', () => {
-            cargarNoticias();
-            cargarOpiniones();
-
-            document.getElementById('opinion-box').addEventListener('submit', function (event) {
-                event.preventDefault();
-                enviarOpinion();
-            });
-        });
-
-        function cargarNoticias() {
+            noticiasSection.innerHTML = `<h2>${footballBall} Últimas Noticias de Fútbol</h2>`;
 
             // Reemplaza 'TU_CLAVE_DE_API' con tu clave de API de The Guardian
             const apiKey = 'f207afbb-e945-4039-8721-929b02811049';
-            const newsUrl = 'https://content.guardianapis.com/football?api-key=f207afbb-e945-4039-8721-929b02811049';
+            const newsUrl = `https://content.guardianapis.com/football?api-key=f207afbb-e945-4039-8721-929b02811049`;
 
             fetch(newsUrl)
                 .then(response => response.json())
@@ -296,82 +275,43 @@
                 .catch(error => {
                     console.error('Error al obtener noticias de fútbol:', error);
                 });
-			}
 
             function mostrarNoticias(noticias) {
                 noticias.forEach(noticia => {
                     const articleElement = document.createElement('article');
-			console.log(noticia);
-                    //articleElement.innerHTML = `<h3>${noticia.webTitle}</h3><p>${noticia.webTrailText}</p><a href="${noticia.webUrl}" target="_blank">Leer más</a><hr>`;
-					articleElement.innerHTML = noticia.webTitle;
+                    articleElement.innerHTML = `
+                        <h3>${noticia.webTitle}</h3>
+                        <p>${noticia.webTrailText}</p>
+                        <a href="${noticia.webUrl}" target="_blank">Leer más</a>
+                        <hr>
+                    `;
                     noticiasSection.appendChild(articleElement);
-					//noticiasSection.innerHTML = `<h2>${footballBall} Últimas Noticias de Fútbol</h2>`;
                 });
             }
-			
-			cargarOpiniones();
+        });
+      function enviarOpinion() {
+        const opinionText = document.getElementById('opinion').value;
 
-            function cargarOpiniones() {
-                db.collection('opiniones').onSnapshot(snapshot => {
-                    opinionesGuardadas.innerHTML = '';
-                    snapshot.forEach(doc => {
-                        const opinion = doc.data();
-                        mostrarOpinion(opinion);
-                    });
-                });
-            }
+        // Verificar si el elemento 'opinionesGuardadas' existe antes de intentar agregar la opinión
+        const opinionesGuardadas = document.getElementById('opinionesGuardadas');
+        if (opinionesGuardadas) {
+            // Crear un nuevo elemento para mostrar la opinión
+            const opinionElement = document.createElement('div');
+            opinionElement.classList.add('opinion'); // Agrega la clase 'opinion' al nuevo elemento
+            opinionElement.innerHTML = `
+                <p>${opinionText}</p>
+                <hr>
+            `;
 
-            function mostrarOpinion(opinion) {
-                const opinionElement = document.createElement('div');
-                opinionElement.classList.add('opinion');
-                opinionElement.innerHTML ='<p>${opinion.text}</p><button onclick="responderOpinion(\'${opinion.id}\')">Responder</button><div id="respuestas-${opinion.id}"></div><hr>';
+            // Agregar la opinión al contenedor
+            opinionesGuardadas.appendChild(opinionElement);
 
-                opinionesGuardadas.appendChild(opinionElement);
-
-                // Cargar respuestas asociadas a esta opinión
-                cargarRespuestas(opinion.id, 'respuestas-${opinion.id}');
-            }
-
-            function cargarRespuestas(opinionId, containerId) {
-                db.collection('respuestas').where('opinionId', '==', opinionId).onSnapshot(snapshot => {
-                    const respuestasContainer = document.getElementById(containerId);
-                    respuestasContainer.innerHTML = '';
-
-                    snapshot.forEach(doc => {
-                        const respuesta = doc.data();
-                        mostrarRespuesta(respuesta, respuestasContainer);
-                    });
-                });
-            }
-
-            function mostrarRespuesta(respuesta, container) {
-                const respuestaElement = document.createElement('div');
-                respuestaElement.classList.add('respuesta');
-                respuestaElement.innerHTML = '<p>${respuesta.text}</p><hr>';
-
-                container.appendChild(respuestaElement);
-            }
-
-            function responderOpinion(opinionId) {
-                const respuestaText = prompt('Responder a la opinión:');
-                if (respuestaText) {
-                    db.collection('respuestas').add({
-                        opinionId: opinionId,
-                        text: respuestaText
-                    });
-                }
-            };
-
-            function enviarOpinion() {
-                const opinionText = document.getElementById('opinion').value;
-
-                db.collection('opiniones').add({
-                    text: opinionText
-                });
-
-                // Limpiar el área de opinión después de enviar
-                document.getElementById('opinion').value = '';
-               };
+            // Limpiar el área de opinión después de enviar
+            document.getElementById('opinion').value = '';
+        } else {
+            console.error("Elemento 'opinionesGuardadas' no encontrado.");
+        }
+    }
 </script>
 </body>
 </html>
