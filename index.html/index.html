@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -22,12 +23,15 @@
         }
 
         header {
-            background: url('https://raw.githubusercontent.com/valechito/futbolchampan/master/Free_Sample_By_Wix-removebg-preview.png') center center no-repeat;
-            background-size: cover;
-            color: #fff;
-            padding: 20px;
             text-align: center;
             animation: fadeInDown 1s ease;
+        }
+
+        #logo {
+            width: 100px; /* Ajusta el ancho del logo según sea necesario */
+            height: auto; /* Mantén la proporción original del logo */
+            display: block; /* Para evitar que el texto aparezca junto al logo */
+            margin: 0 auto 10px; /* Alinea el logo en el centro y agrega espacio en la parte inferior */
         }
 
         h1 {
@@ -220,6 +224,7 @@
 </head>
 <body>
     <header>
+        <img id="logo" src="https://raw.githubusercontent.com/valechito/futbolchampan/master/Free_Sample_By_Wix-removebg-preview.png" alt="Logo">
         <h1>Futbol Champan</h1>
         <p>¡Tu fuente de noticias, partidos y análisis futbolero!</p>
     </header>
