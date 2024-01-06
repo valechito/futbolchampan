@@ -270,9 +270,19 @@
 
         function enviarOpinion() {
             const opinionText = document.getElementById('opinion').value;
-            // Aquí puedes realizar acciones con la opinión, como guardarla en una base de datos, etc.
-            alert('Opinión enviada: ' + opinionText);
-            // Puedes agregar lógica adicional según sea necesario
+           
+            // Crear un nuevo elemento para mostrar la opinión
+            const opinionElement = document.createElement('div');
+            opinionElement.innerHTML = `
+                <p>${opinionText}</p>
+                <hr>
+            `;
+            // Agregar la opinión al contenedor
+            const opinionesGuardadas = document.getElementById('opinionesGuardadas');
+            opinionesGuardadas.appendChild(opinionElement);
+            
+            // Limpiar el área de opinión después de enviar
+            document.getElementById('opinion').value = '';
         }
     </script>
 </body>
