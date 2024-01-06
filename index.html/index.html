@@ -267,23 +267,28 @@
                 });
             }
         });
+            function enviarOpinion() {
+           const opinionText = document.getElementById('opinion').value;
 
-        function enviarOpinion() {
-            const opinionText = document.getElementById('opinion').value;
-           
-            // Crear un nuevo elemento para mostrar la opinión
-            const opinionElement = document.createElement('div');
-            opinionElement.innerHTML = `
-                <p>${opinionText}</p>
-                <hr>
-            `;
-            // Agregar la opinión al contenedor
-            const opinionesGuardadas = document.getElementById('opinionesGuardadas');
-            opinionesGuardadas.appendChild(opinionElement);
-            
-            // Limpiar el área de opinión después de enviar
-            document.getElementById('opinion').value = '';
-        }
-    </script>
+    // Verificar si el elemento 'opinionesGuardadas' existe antes de intentar agregar la opinión
+           const opinionesGuardadas = document.getElementById('opinionesGuardadas');
+           if (opinionesGuardadas) {
+        // Crear un nuevo elemento para mostrar la opinión
+           const opinionElement = document.createElement('div');
+           opinionElement.innerHTML = `
+            <p>${opinionText}</p>
+            <hr>
+        `;
+
+        // Agregar la opinión al contenedor
+        opinionesGuardadas.appendChild(opinionElement);
+
+        // Limpiar el área de opinión después de enviar
+        document.getElementById('opinion').value = '';
+    } else {
+        console.error("Elemento 'opinionesGuardadas' no encontrado.");
+    }
+}
+</script>
 </body>
 </html>
