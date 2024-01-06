@@ -301,8 +301,10 @@
             function mostrarNoticias(noticias) {
                 noticias.forEach(noticia => {
                     const articleElement = document.createElement('article');
-                    articleElement.innerHTML = '<h3>${noticia.webTitle}</h3><p>${noticia.webTrailText}</p><a href="${noticia.webUrl}" target="_blank">Leer más</a><hr>';
+                    //articleElement.innerHTML = `<h3>${noticia.webTitle}</h3><p>${noticia.webTrailText}</p><a href="${noticia.webUrl}" target="_blank">Leer más</a><hr>`;
+					articleElement.innerHTML = ${noticia.webTitle};
                     noticiasSection.appendChild(articleElement);
+					//noticiasSection.innerHTML = `<h2>${footballBall} Últimas Noticias de Fútbol</h2>`;
                 });
             }
 			
