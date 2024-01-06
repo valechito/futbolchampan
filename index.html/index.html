@@ -8,6 +8,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
     <script src="https://cdn.skypack.dev/fullcalendar@3.10.2"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" />
     <style>
         body {
             font-family: 'Roboto', sans-serif;
@@ -234,17 +235,18 @@
         © 2024 Futbol Champan
     </footer>
 
-    <script type="module">
+  <script>
         // Inicializa Firebase con tus credenciales
-        const firebaseConfig = {
+        var firebaseConfig = {
             apiKey: "AIzaSyASZzUi-z32RoRMzBNr3XwAKVQ-gzMTGSE",
             authDomain: "futbol-champan.firebaseapp.com",
             projectId: "futbol-champan",
         };
-       document.addEventListener('DOMContentLoaded', () => {
-            firebase.initializeApp(firebaseConfig);
-            const db = firebase.firestore();
-            const opinionesGuardadas = document.getElementById('opinionesGuardadas');
+        // Inicializa Firebase
+        firebase.initializeApp(firebaseConfig);
+        var db = firebase.firestore();
+        var opinionesGuardadas = document.getElementById('opinionesGuardadas');
+      
         // Datos de partidos para este mes de enero
         var partidos = [
             { title: 'Equipo 1 vs. Equipo 2', start: '2024-01-05T15:00:00', allDay: false },
@@ -267,6 +269,18 @@
             const noticiasSection = document.getElementById('noticias');
             const footballBall = '<span class="football-ball"></span>';
             noticiasSection.innerHTML = `<h2>${footballBall} Últimas Noticias de Fútbol</h2>`;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            cargarNoticias();
+            cargarOpiniones();
+
+            document.getElementById('opinion-box').addEventListener('submit', function (event) {
+                event.preventDefault();
+                enviarOpinion();
+            });
+        });
+
+        function cargarNoticias() {
 
             // Reemplaza 'TU_CLAVE_DE_API' con tu clave de API de The Guardian
             const apiKey = 'f207afbb-e945-4039-8721-929b02811049';
@@ -310,7 +324,7 @@
             function mostrarOpinion(opinion) {
                 const opinionElement = document.createElement('div');
                 opinionElement.classList.add('opinion');
-                opinionElement.innerHTML = `
+                opinionElement.innerHTML =`
                     <p>${opinion.text}</p>
                     <button onclick="responderOpinion('${opinion.id}')">Responder</button>
                     <div id="respuestas-${opinion.id}"></div>
@@ -366,7 +380,6 @@
                 // Limpiar el área de opinión después de enviar
                 document.getElementById('opinion').value = '';
             }
-        });
     </script>
 </body>
 </html>
