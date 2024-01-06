@@ -279,6 +279,7 @@
             function mostrarNoticias(noticias) {
                 noticias.forEach(noticia => {
                     const articleElement = document.createElement('article');
+                    console.log(noticia);
                     articleElement.innerHTML = `
                         <h3>${noticia.webTitle}</h3>
                         <p>${noticia.webTrailText}</p>
