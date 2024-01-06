@@ -193,8 +193,6 @@
     } 
    </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-    <script src="https://cdn.skypack.dev/@fullcalendar/moment@3.10.2"></script>
     <title>Futbol Champan</title>
 </head>
 <body>
@@ -243,7 +241,7 @@
             authDomain: "futbol-champan.firebaseapp.com",
             projectId: "futbol-champan",
         };
-        document.addEventListener('DOMContentLoaded', function () {
+       document.addEventListener('DOMContentLoaded', () => {
             firebase.initializeApp(firebaseConfig);
             const db = firebase.firestore();
             const opinionesGuardadas = document.getElementById('opinionesGuardadas');
@@ -253,10 +251,7 @@
             { title: 'Equipo 3 vs. Equipo 4', start: '2024-01-10T18:30:00', allDay: false },
             // Agrega más partidos según sea necesario
         ];
-
-        document.addEventListener('DOMContentLoaded', function() {
-            // Resto de tu código aquí
-
+           
             // Configura el calendario con FullCalendar
             $('#calendar').fullCalendar({
                 header: {
