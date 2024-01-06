@@ -7,19 +7,7 @@
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.0.2/firebase-firestore.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
-    <script>
-        // Inicializa Firebase con tus credenciales
-        const firebaseConfig = {
-            apiKey: "AIzaSyASZzUi-z32RoRMzBNr3XwAKVQ-gzMTGSE",
-            authDomain: "futbol-champan.firebaseapp.com",
-            projectId: "futbol-champan",
- };
-    document.addEventListener('DOMContentLoaded', function () {
-        firebase.initializeApp(firebaseConfig);
-        const db = firebase.firestore();
-        const opinionesGuardadas = document.getElementById('opinionesGuardadas');
-    </head>
+    <script src="https://cdn.skypack.dev/fullcalendar@3.10.2"></script>
     <style>
         body {
             font-family: 'Roboto', sans-serif;
