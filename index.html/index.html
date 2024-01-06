@@ -168,6 +168,26 @@
         .fc-event:hover {
             background-color: #ff6e3a; /* Naranja más claro */
         }
+#opinionesGuardadas {
+        margin-top: 20px;
+    }
+
+    .opinion {
+        background-color: #444;
+        color: #fff;
+        padding: 15px;
+        margin-bottom: 10px;
+        border-radius: 8px;
+    }
+
+    .opinion p {
+        margin: 0;
+    }
+
+    .opinion hr {
+        border-color: #666;
+        margin-top: 10px;
+    } 
     </style>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" />
@@ -268,28 +288,29 @@
                 });
             }
         });
-            function enviarOpinion() {
-           const opinionText = document.getElementById('opinion').value;
+      function enviarOpinion() {
+        const opinionText = document.getElementById('opinion').value;
 
-    // Verificar si el elemento 'opinionesGuardadas' existe antes de intentar agregar la opinión
-           const opinionesGuardadas = document.getElementById('opinionesGuardadas');
-           if (opinionesGuardadas) {
-        // Crear un nuevo elemento para mostrar la opinión
-           const opinionElement = document.createElement('div');
-           opinionElement.innerHTML = `
-            <p>${opinionText}</p>
-            <hr>
-        `;
+        // Verificar si el elemento 'opinionesGuardadas' existe antes de intentar agregar la opinión
+        const opinionesGuardadas = document.getElementById('opinionesGuardadas');
+        if (opinionesGuardadas) {
+            // Crear un nuevo elemento para mostrar la opinión
+            const opinionElement = document.createElement('div');
+            opinionElement.classList.add('opinion'); // Agrega la clase 'opinion' al nuevo elemento
+            opinionElement.innerHTML = `
+                <p>${opinionText}</p>
+                <hr>
+            `;
 
-        // Agregar la opinión al contenedor
-        opinionesGuardadas.appendChild(opinionElement);
+            // Agregar la opinión al contenedor
+            opinionesGuardadas.appendChild(opinionElement);
 
-        // Limpiar el área de opinión después de enviar
-        document.getElementById('opinion').value = '';
-    } else {
-        console.error("Elemento 'opinionesGuardadas' no encontrado.");
+            // Limpiar el área de opinión después de enviar
+            document.getElementById('opinion').value = '';
+        } else {
+            console.error("Elemento 'opinionesGuardadas' no encontrado.");
+        }
     }
-}
 </script>
 </body>
 </html>
