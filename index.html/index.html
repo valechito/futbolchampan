@@ -218,10 +218,25 @@
             data-theme=""
             data-refresh="15"
             data-show-errors="false"
-            data-show-logos="true">
-        </div>
+            data-show-logos="true"
     </div>
+        <!-- Llamada a la API -->
+        <script>
+            var settings = {
+                "url": "https://v3.football.api-sports.io/leagues",
+                "method": "GET",
+                "timeout": 10,
+                "headers": {
+                    "x-apisports": "8359dce2a58e8f6223d05569688b108d",
+                    "x-rapidapi-host": "v3.football.api-sports.io"
+                },
+            };
 
+            $.ajax(settings).done(function (response) {
+                console.log(response);
+            });
+        </script>
+    </div>
     <footer>
         © 2024 Futbol Champan
     </footer>
