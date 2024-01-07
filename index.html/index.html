@@ -13,8 +13,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" />
     <style>
-        
-         body {
+        body {
             font-family: 'Roboto', sans-serif;
             background-color: #1f1f1f;
             margin: 0;
@@ -25,41 +24,28 @@
         header {
             text-align: center;
             animation: fadeInDown 1s ease;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        #header-container {
-            background-color: #e8491d; /* Naranja */
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 10px; /* Espaciado entre el contenedor y el resto del contenido */
-            width: 100%;
-        }
-
-        #logo-container {
-            width: 50%;
-            text-align: right;
         }
 
         #logo {
-            width: 500px; /* Ajusta el ancho del logo según sea necesario */
+            width: 100px; /* Ajusta el ancho del logo según sea necesario */
             height: auto; /* Mantén la proporción original del logo */
+            display: block; /* Para evitar que el texto aparezca junto al logo */
+            margin: 0 auto 10px; /* Alinea el logo en el centro y agrega espacio en la parte inferior */
         }
 
         h1 {
             font-family: 'Cinzel', serif;
             font-size: 4em;
-            margin-bottom: 0;
-            display: inline-block; /* Para que el fondo abarque solo el ancho del texto */
+            margin-bottom: 10px;
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            display: inline-block;
+            border-radius: 10px;
         }
 
         .slogan {
             font-family: 'Lobster', cursive;
             font-size: 2.5em;
-            margin-top: 0; 
         }
         
         .container {
