@@ -26,33 +26,27 @@
             animation: fadeInDown 1s ease;
         }
 
-      #logo-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #e8491d;
-    padding: 15px;
-    border-radius: 10px;
-    margin-bottom: 10px;
-}
+        #logo-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #e8491d;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
 
-.logo {
-    width: 80px; /* Puedes ajustar el tamaño según sea necesario */
-    height: auto;
-}
+        #logo {
+            width: 150px;
+            height: auto;
+        }
 
-#title-container {
-    flex-grow: 1;
-    text-align: center;
-    margin: 0 10px;
-}
-
-h1 {
-    font-family: 'Cinzel', serif;
-    font-size: 4em;
-    margin-bottom: 10px;
-    color: #fff;
-}
+        h1 {
+            font-family: 'Cinzel', serif;
+            font-size: 4em;
+            margin-bottom: 10px;
+            color: #fff;
+        }
 
         .slogan {
             font-family: 'Lobster', cursive;
@@ -239,6 +233,13 @@ h1 {
                 margin-bottom: 10px;
             }
         }
+        
+        @media screen and (min-width: 768px) {
+        #logo {
+            width: 150px; /* Tamaño más grande para computadoras */
+        }
+    }
+        
     </style>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" />
@@ -250,11 +251,9 @@ h1 {
 <body>
     <header>
         <div id="logo-container">
-            <img id="logo" src="https://raw.githubusercontent.com/valechito/futbolchampan/master/Free_Sample_By_Wix-removebg-preview.png" alt="Logo1">
-            <div id="title-container">
-                <h1>Futbol Champan</h1>
-                <img id="logo" src="https://raw.githubusercontent.com/valechito/futbolchampan/master/Free_Sample_By_Wix-removebg-preview.png" alt="Logo2">
-            </div>
+            <img id="logo" src="https://raw.githubusercontent.com/valechito/futbolchampan/master/Free_Sample_By_Wix-removebg-preview.png" alt="Logo">
+            <h1>Futbol Champan</h1>
+            <img id="logo" src="https://raw.githubusercontent.com/valechito/futbolchampan/master/Free_Sample_By_Wix-removebg-preview.png" alt="Logo">
         </div>
         <p>¡Tu fuente de noticias, partidos y análisis futbolero!</p>
     </header>
@@ -373,5 +372,5 @@ h1 {
         }
     </script>
 </body>
-
+    
 </html>
