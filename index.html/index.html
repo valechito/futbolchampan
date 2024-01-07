@@ -30,14 +30,14 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: rgba(255, 255, 255, 0.2);
+            background-color: #e8491d;
             padding: 15px;
             border-radius: 10px;
             margin-bottom: 10px;
         }
 
         #logo {
-            width: 100px; /* Ajusta el ancho del logo según sea necesario */
+            width: 150px; /* Ajusta el ancho del logo según sea necesario */
             height: auto; /* Mantén la proporción original del logo */
         }
 
@@ -45,11 +45,13 @@
             font-family: 'Cinzel', serif;
             font-size: 4em;
             margin-bottom: 10px;
+            color: #fff;
         }
 
         .slogan {
             font-family: 'Lobster', cursive;
             font-size: 2.5em;
+            color: #fff;
         }
 
         .container {
@@ -231,6 +233,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
     <title>Futbol Champan</title>
 </head>
+
 <body>
     <header>
         <div id="logo-container">
@@ -329,6 +332,7 @@
                 });
             }
         });
+
         function enviarOpinion() {
             const opinionText = document.getElementById('opinion').value;
 
@@ -354,4 +358,5 @@
         }
     </script>
 </body>
+
 </html>
