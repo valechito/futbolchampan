@@ -37,8 +37,8 @@
         }
 
         #logo {
-            width: 150px; /* Ajusta el ancho del logo según sea necesario */
-            height: auto; /* Mantén la proporción original del logo */
+            width: 150px;
+            height: auto;
         }
 
         h1 {
@@ -84,7 +84,6 @@
 
         #noticias p {
             font-size: 1em;
-            /* Reducido el tamaño de las noticias */
             color: #00bcd4;
             font-family: 'Georgia', serif;
         }
@@ -182,7 +181,6 @@
         /* Agregamos estilos al calendario */
         .fc-head {
             background-color: #e8491d;
-            /* Naranja */
             color: #fff;
             font-weight: bold;
         }
@@ -194,16 +192,13 @@
 
         .fc-event {
             background-color: #e8491d;
-            /* Naranja */
             color: #fff;
             border: 1px solid #e8491d;
-            /* Naranja */
             border-radius: 5px;
         }
 
         .fc-event:hover {
             background-color: #ff6e3a;
-            /* Naranja más claro */
         }
 
         #opinionesGuardadas {
@@ -225,6 +220,18 @@
         .opinion hr {
             border-color: #666;
             margin-top: 10px;
+        }
+
+        /* Estilos para dispositivos móviles */
+        @media screen and (max-width: 600px) {
+            #logo-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            #logo {
+                margin-bottom: 10px;
+            }
         }
     </style>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
@@ -358,5 +365,5 @@
         }
     </script>
 </body>
-
+    
 </html>
