@@ -37,22 +37,21 @@
         }
 
         #logo {
-            width: 150px;
+            width: 100px;
             height: auto;
         }
-        
-         #title-container {
-            padding: 0 5px;
-            background-color: rgba(255, 255, 255, 0.2);
-            border-radius: 6px;
+
+        #title-container {
+            flex-grow: 1;
+            text-align: center;
+            margin: 0 10px;
         }
 
         h1 {
             font-family: 'Cinzel', serif;
-            font-size: 2em;
-            margin: 10px 0;
+            font-size: 4em;
+            margin-bottom: 10px;
             color: #fff;
-            display: inline-block;
         }
 
         .slogan {
@@ -240,14 +239,6 @@
                 margin-bottom: 10px;
             }
         }
-
-    /* Estilos para computadoras (ancho mínimo de 768px) */
-    @media screen and (min-width: 768px) {
-        #logo {
-            width: 250px; /* Tamaño más grande para computadoras */
-        }
-    }
-    
     </style>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" />
@@ -261,8 +252,9 @@
         <div id="logo-container">
             <img id="logo" src="https://raw.githubusercontent.com/valechito/futbolchampan/master/Free_Sample_By_Wix-removebg-preview.png" alt="Logo">
             <div id="title-container">
-            <h1>Futbol Champan</h1>
-            <img id="logo" src="https://raw.githubusercontent.com/valechito/futbolchampan/master/Free_Sample_By_Wix-removebg-preview.png" alt="Logo">
+                <h1>Futbol Champan</h1>
+                <img id="logo" src="https://raw.githubusercontent.com/valechito/futbolchampan/master/Free_Sample_By_Wix-removebg-preview.png" alt="Logo">
+            </div>
         </div>
         <p>¡Tu fuente de noticias, partidos y análisis futbolero!</p>
     </header>
