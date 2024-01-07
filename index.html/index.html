@@ -13,7 +13,8 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" />
     <style>
-               body {
+        
+         body {
             font-family: 'Roboto', sans-serif;
             background-color: #1f1f1f;
             margin: 0;
@@ -30,15 +31,21 @@
             flex-wrap: wrap;
         }
 
-        #logo-container {
+        #header-container {
             background-color: #e8491d; /* Naranja */
             padding: 15px;
             border-radius: 10px;
-            margin-right: 10px; /* Ajusta el espacio entre el contenedor y el siguiente elemento (título) */
+            margin-bottom: 10px; /* Espaciado entre el contenedor y el resto del contenido */
+            width: 100%;
+        }
+
+        #logo-container {
+            width: 50%;
+            text-align: right;
         }
 
         #logo {
-            width: 100px; /* Ajusta el ancho del logo según sea necesario */
+            width: 150px; /* Ajusta el ancho del logo según sea necesario */
             height: auto; /* Mantén la proporción original del logo */
         }
 
@@ -46,6 +53,7 @@
             font-family: 'Cinzel', serif;
             font-size: 4em;
             margin-bottom: 0;
+            display: inline-block; /* Para que el fondo abarque solo el ancho del texto */
         }
 
         .slogan {
@@ -53,7 +61,6 @@
             font-size: 2.5em;
             margin-top: 0; 
         }
-
         
         .container {
             max-width: 800px;
