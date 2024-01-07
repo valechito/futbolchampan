@@ -26,28 +26,32 @@
             animation: fadeInDown 1s ease;
         }
 
+        #logo-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
         #logo {
             width: 100px; /* Ajusta el ancho del logo según sea necesario */
             height: auto; /* Mantén la proporción original del logo */
-            display: block; /* Para evitar que el texto aparezca junto al logo */
-            margin: 0 auto 10px; /* Alinea el logo en el centro y agrega espacio en la parte inferior */
         }
 
         h1 {
             font-family: 'Cinzel', serif;
             font-size: 4em;
             margin-bottom: 10px;
-            background-color: rgba(255, 255, 255, 0.2);
-            padding: 15px;
-            display: inline-block;
-            border-radius: 10px;
         }
 
         .slogan {
             font-family: 'Lobster', cursive;
             font-size: 2.5em;
         }
-        
+
         .container {
             max-width: 800px;
             margin: 20px auto;
@@ -77,7 +81,8 @@
         }
 
         #noticias p {
-            font-size: 1em; /* Reducido el tamaño de las noticias */
+            font-size: 1em;
+            /* Reducido el tamaño de las noticias */
             color: #00bcd4;
             font-family: 'Georgia', serif;
         }
@@ -174,7 +179,8 @@
 
         /* Agregamos estilos al calendario */
         .fc-head {
-            background-color: #e8491d; /* Naranja */
+            background-color: #e8491d;
+            /* Naranja */
             color: #fff;
             font-weight: bold;
         }
@@ -185,35 +191,39 @@
         }
 
         .fc-event {
-            background-color: #e8491d; /* Naranja */
+            background-color: #e8491d;
+            /* Naranja */
             color: #fff;
-            border: 1px solid #e8491d; /* Naranja */
+            border: 1px solid #e8491d;
+            /* Naranja */
             border-radius: 5px;
         }
 
         .fc-event:hover {
-            background-color: #ff6e3a; /* Naranja más claro */
+            background-color: #ff6e3a;
+            /* Naranja más claro */
         }
-#opinionesGuardadas {
-        margin-top: 20px;
-    }
 
-    .opinion {
-        background-color: #444;
-        color: #fff;
-        padding: 15px;
-        margin-bottom: 10px;
-        border-radius: 8px;
-    }
+        #opinionesGuardadas {
+            margin-top: 20px;
+        }
 
-    .opinion p {
-        margin: 0;
-    }
+        .opinion {
+            background-color: #444;
+            color: #fff;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+        }
 
-    .opinion hr {
-        border-color: #666;
-        margin-top: 10px;
-    } 
+        .opinion p {
+            margin: 0;
+        }
+
+        .opinion hr {
+            border-color: #666;
+            margin-top: 10px;
+        }
     </style>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" />
@@ -223,8 +233,11 @@
 </head>
 <body>
     <header>
-        <img id="logo" src="https://raw.githubusercontent.com/valechito/futbolchampan/master/Free_Sample_By_Wix-removebg-preview.png" alt="Logo">
-        <h1>Futbol Champan</h1>
+        <div id="logo-container">
+            <img id="logo" src="https://raw.githubusercontent.com/valechito/futbolchampan/master/Free_Sample_By_Wix-removebg-preview.png" alt="Logo">
+            <h1>Futbol Champan</h1>
+            <img id="logo" src="https://raw.githubusercontent.com/valechito/futbolchampan/master/Free_Sample_By_Wix-removebg-preview.png" alt="Logo">
+        </div>
         <p>¡Tu fuente de noticias, partidos y análisis futbolero!</p>
     </header>
 
@@ -244,17 +257,17 @@
             <!-- Puedes agregar más elementos aquí -->
         </div>
 
-     <!-- Opiniones y Análisis -->
-<div class="opinions">
-    <h2>Opiniones y Análisis</h2>
-    <div id="opinion-box">
-        <label for="opinion">Comparte tu opinión:</label>
-        <textarea id="opinion" rows="4" placeholder="Escribe aquí tu opinión..."></textarea>
-        <button onclick="enviarOpinion()">Enviar Opinión</button>
-    </div>
-    <div id="opinionesGuardadas"></div>
-    <p>Opiniones y análisis futbolero...</p>
-</div>
+        <!-- Opiniones y Análisis -->
+        <div class="opinions">
+            <h2>Opiniones y Análisis</h2>
+            <div id="opinion-box">
+                <label for="opinion">Comparte tu opinión:</label>
+                <textarea id="opinion" rows="4" placeholder="Escribe aquí tu opinión..."></textarea>
+                <button onclick="enviarOpinion()">Enviar Opinión</button>
+            </div>
+            <div id="opinionesGuardadas"></div>
+            <p>Opiniones y análisis futbolero...</p>
+        </div>
     </div>
 
     <footer>
@@ -269,7 +282,7 @@
             // Agrega más partidos según sea necesario
         ];
 
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // Resto de tu código aquí
 
             // Configura el calendario con FullCalendar
@@ -316,29 +329,29 @@
                 });
             }
         });
-      function enviarOpinion() {
-        const opinionText = document.getElementById('opinion').value;
+        function enviarOpinion() {
+            const opinionText = document.getElementById('opinion').value;
 
-        // Verificar si el elemento 'opinionesGuardadas' existe antes de intentar agregar la opinión
-        const opinionesGuardadas = document.getElementById('opinionesGuardadas');
-        if (opinionesGuardadas) {
-            // Crear un nuevo elemento para mostrar la opinión
-            const opinionElement = document.createElement('div');
-            opinionElement.classList.add('opinion'); // Agrega la clase 'opinion' al nuevo elemento
-            opinionElement.innerHTML = `
+            // Verificar si el elemento 'opinionesGuardadas' existe antes de intentar agregar la opinión
+            const opinionesGuardadas = document.getElementById('opinionesGuardadas');
+            if (opinionesGuardadas) {
+                // Crear un nuevo elemento para mostrar la opinión
+                const opinionElement = document.createElement('div');
+                opinionElement.classList.add('opinion'); // Agrega la clase 'opinion' al nuevo elemento
+                opinionElement.innerHTML = `
                 <p>${opinionText}</p>
                 <hr>
             `;
 
-            // Agregar la opinión al contenedor
-            opinionesGuardadas.appendChild(opinionElement);
+                // Agregar la opinión al contenedor
+                opinionesGuardadas.appendChild(opinionElement);
 
-            // Limpiar el área de opinión después de enviar
-            document.getElementById('opinion').value = '';
-        } else {
-            console.error("Elemento 'opinionesGuardadas' no encontrado.");
+                // Limpiar el área de opinión después de enviar
+                document.getElementById('opinion').value = '';
+            } else {
+                console.error("Elemento 'opinionesGuardadas' no encontrado.");
+            }
         }
-    }
-</script>
+    </script>
 </body>
 </html>
