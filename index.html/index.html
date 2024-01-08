@@ -6,12 +6,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500&family=Lobster&display=swap">
-     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
-    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" />
     <style>
         body {
@@ -324,7 +323,7 @@
             <p>Opiniones y análisis futbolero...</p>
         </div>
     </div>
-    <div id="google_translate_element"></div>
+
     <footer>
         © 2024 Futbol Champan
     </footer>
@@ -371,36 +370,19 @@
                 });
 
             function mostrarNoticias(noticias) {
-                noticias.articles.forEach(noticia => {
+                noticias.forEach(noticia => {
                     const articleElement = document.createElement('article');
                     console.log(noticia);
-                       traducirTexto(noticia.title, 'es', (tituloTraducido) => {
-            traducirTexto(noticia.description, 'es', (descripcionTraducida) => {
                     articleElement.innerHTML = `
-                          <h3>${tituloTraducido}</h3>
-                    <p>${descripcionTraducida}</p>
-                    <a href="${noticia.url}" target="_blank">Leer más</a>
-                    <hr>
+                        <h3>${noticia.webTitle}</h3>
+                        <p>${noticia.webPublicationDate}</p>
+                        <a href="${noticia.webUrl}" target="_blank">Leer más</a>
+                        <hr>
                     `;
                     noticiasSection.appendChild(articleElement);
                 });
+            }
         });
-                // Función para traducir un texto utilizando la API de Google Translate
-function traducirTexto(texto, idiomaDestino, callback) {
-    const traductor = new google.translate.TranslateElement({}, 'google_translate_element');
-
-    traductor.addEventListener('googleTranslateError', function (e) {
-        console.error('Error al traducir:', e);
-    });
-
-    traductor.addEventListener('googleTranslateOnLoad', function () {
-        traductor.translate(texto, idiomaDestino);
-        traductor.addEventListener('googleTranslateOnLoad', function (e) {
-            const textoTraducido = e.target.innerHTML;
-            callback(textoTraducido);
-        });
-    });
-}
 
         function enviarOpinion() {
             const opinionText = document.getElementById('opinion').value;
@@ -425,6 +407,7 @@ function traducirTexto(texto, idiomaDestino, callback) {
                 console.error("Elemento 'opinionesGuardadas' no encontrado.");
             }
         }
+    </script>
 </body>
     
 </html>
