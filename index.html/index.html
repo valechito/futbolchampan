@@ -278,26 +278,6 @@
 </head>
 
 <body>
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-     <script>
-        // Reemplaza 'TU_CLAVE_DE_API' con tu clave de API de News API
-        const apiKey = '755424f07a3d40d78df88f68e2d2653e';
-        const apiUrl = 'https://newsapi.org/v2/top-headlines?country=es&category=sports&apiKey=755424f07a3d40d78df88f68e2d2653e':
-
-       // Ejemplo de solicitud a la API de News API
-        $.ajax({
-            url: apiUrl,
-            method: 'GET',
-            success: function (data) {
-                // Procesa los datos devueltos por la API
-                console.log(data);
-                // Aquí puedes trabajar con los datos para mostrar noticias en tu página
-            },
-            error: function (error) {
-                console.error('Error en la solicitud a la API de News API:', error);
-            }
-        });
-    </script>
     <header>
         <div id="logo-container">
             <img id="logo" src="https://raw.githubusercontent.com/valechito/futbolchampan/master/Free_Sample_By_Wix-removebg-preview.png" alt="Logo">
