@@ -283,6 +283,61 @@
             border-bottom: 2px solid #fff;
         }
         
+         .sidebar {
+        position: fixed;
+        left: 0;
+        top: 0;
+        padding: 15px;
+        background-color: #e8491d;
+    }
+
+    .open-btn {
+        background-color: #333;
+        color: #fff;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    .sidenav {
+        height: 100%;
+        width: 0;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: #333;
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+    }
+
+    .sidenav a {
+        padding: 15px 20px;
+        text-decoration: none;
+        font-size: 1.2em;
+        color: #fff;
+        display: block;
+        transition: 0.3s;
+    }
+
+    .sidenav a:hover {
+        background-color: #e8491d;
+        color: #fff;
+    }
+
+    .close-btn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 2em;
+        cursor: pointer;
+    }
+
+    .header-text {
+        margin-top: 20px;
+    }    
     </style>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" />
@@ -311,6 +366,13 @@
             <h1>Futbol Champan</h1>
             <img id="logo" src="https://raw.githubusercontent.com/valechito/futbolchampan/master/Free_Sample_By_Wix-removebg-preview.png" alt="Logo">
         </div>
+        
+         <div class="header-text">
+            <h1>¡Futbol Champan!</h1>
+            <p>Explorando la Pasión Futbolera</p>
+            <p>Sumérgete en nuestro blog de fútbol donde compartimos nuestra pasión por el deporte rey y sus valores.</p>
+        </div>
+        
         <nav>
           <ul>
             <li><a href="#noticias">Noticias</a></li>
@@ -448,6 +510,15 @@
                 console.error("Elemento 'opinionesGuardadas' no encontrado.");
             }
         }
+        
+          function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
+        
     </script>
 </body>
     
